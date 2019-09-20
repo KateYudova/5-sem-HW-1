@@ -1,4 +1,3 @@
-
 #нумерация списка начинается с единицы, список однонаправленный
 class Node: # звено
     def __init__(self, value = None, next = None):
@@ -34,14 +33,16 @@ class LinkList: # список
             return
         current = self.first
         count = 0
-        if y < self.length:
+        if 1 < y < self.length:
             while current != None:
                 count +=1
                 if count + 1 == y:
                     current.next = Node(x, current.next)
                     break
                 current = current.next
-        else:
+        elif y == -1: # у = -1 признак того, что звено надо добавлять в конец
+            self.last.next = self.last = Node(x, None)
+        else : 
             self.last.next = self.last = Node(x, None)
     def dele(self, y): #удаление звена с любой позиции
         if self.first == None:
@@ -72,18 +73,20 @@ class LinkList: # список
             if current.value == x:
                 return current
             current = current.next
+
 #примеры для проверки функций
-l = LinkList()
-l.add(1,9)
-l.add(2,8)
-l.add(1,2)
-l.add(2,2)
-print(l)
-l.searc(2).value = 0
-l.searc(2).value = 3
-print(l)
-l.dele(4)
-print(l)
-l.add(6,2)
-l.dele(1)
-print(l)
+
+#l = LinkList()
+#l.add(1,9)
+#l.add(2,8)
+#l.add(1,2)
+#l.add(2,2)
+#print(l)
+#l.searc(2).value = 0
+#l.searc(2).value = 3
+##print(l)
+#l.dele(4)
+#print(l)
+#l.add(6,2)
+#l.dele(1)
+#print(l)
